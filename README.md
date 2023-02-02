@@ -1,6 +1,7 @@
 # Serve
 A simple static file server with directory indexing.
 
+![Screenshot](assets/screenshot.png)
 ## Why I created this package
 I needed a simple way to share files on my local network through `http`.
 
