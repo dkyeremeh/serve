@@ -1,5 +1,5 @@
-# Serve
-A simple static file server with directory indexing.
+# Docker Serve
+A static file server with directory indexing for Docker.
 
 ![Screenshot](assets/screenshot.png)
 ## Why I created this package
