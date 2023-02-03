@@ -2,9 +2,8 @@ version: "3.8"
 
 services:
   serve:
-    # build: https://github.com/dkyeremeh/serve.git
-    build: .
-    image: serve
+    # build: .
+    image: elDekyfin/serve
     ports:
       - 8080:8080
     volumes:
