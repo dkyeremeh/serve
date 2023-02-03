@@ -1,18 +1,29 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Build n Push
+run-name: Build images & push to Docker hub
+on:
+  push:
+    branches: ["master"]
+  schedule:
+    - cron: "37 3 */2 * *"
+
 jobs:
-  docker:
+  update-build-push:
     runs-on: ubuntu-latest
     steps:
       # Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: check if app is up to date
-        run: bash ./scripts/exit_latest.sh
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up QEMU
+      - name: Update app if it's not up to date
+        run: bash ./scripts/update.sh
+
+      - name: Set Qemu
         uses: docker/setup-qemu-action@v2
 
       - name: Set up Docker Buildx
