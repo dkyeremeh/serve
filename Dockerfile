@@ -1,7 +1,9 @@
 FROM node:lts-alpine
 
+ARG VERSION=latest
+
 WORKDIR /var/static
-RUN yarn global add serve
+RUN yarn global add serve@${VERSION}
 
 EXPOSE 8080
 
